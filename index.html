@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Interest Calculator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #24324a;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #243b67;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 15px;
+      background: #172a4d;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    section {
+      background: white;
+      padding: 30px;
+      margin-bottom: 25px;
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      color: #243b67;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #ccd5e3;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: #243b67;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #385b98;
+    }
+
+    #result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #18704c;
+      margin-top: 18px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #69758a;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Simple Interest Calculator</h1>
+    <p>A simple tool to calculate interest easily</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+
+  <main>
+    <section id="home">
+      <h2>Home</h2>
+      <p>
+        Welcome to our Simple Interest Calculator website!
+        Our goal is to make financial calculations
+        simple and accessible for everyone.
+      </p>
+
+      <p>
+        Enter the principal amount, annual interest
+        rate, and time period to calculate simple interest.
+      </p>
+
+      <h3>Calculate Simple Interest</h3>
+
+      <label for="principal">Principal Amount</label>
+      <input type="number" id="principal"
+             min="0" step="any" placeholder="1000">
+
+      <label for="rate">Annual Interest Rate (%)</label>
+      <input type="number" id="rate"
+             min="0" step="any" placeholder="5">
+
+      <label for="time">Time Period (Years)</label>
+      <input type="number" id="time"
+             min="0" step="any" placeholder="2">
+
+      <button type="button" onclick="calculateInterest()">
+        Calculate
+      </button>
+
+      <p id="result" aria-live="polite"></p>
+    </section>
+
+    <section id="about">
+      <h2>About Us</h2>
+      <p>
+        This website was developed as a learning project
+        to demonstrate basic web development skills
+        using HTML, CSS, and JavaScript.
+      </p>
+
+      <p>
+        The calculator uses the simple interest formula:
+      </p>
+
+      <p><strong>SI = (P × R × T) / 100</strong></p>
+
+      <p>
+        P is the principal amount, R is the annual
+        interest rate, and T is the time in years.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p>
+        Have feedback or suggestions about this project?
+        You can visit the GitHub repository.
+      </p>
+
+      <p>
+        <a href="https://github.com/lina36lena/simple-interest-calculator">
+          View our project on GitHub
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Simple Interest Calculator | Created by Alina</p>
+  </footer>
+
+  <script>
+    function calculateInterest() {
+      const principal = Number(
+        document.getElementById("principal").value
+      );
+
+      const rate = Number(
+        document.getElementById("rate").value
+      );
+
+      const time = Number(
+        document.getElementById("time").value
+      );
+
+      const result = document.getElementById("result");
+
+      if (
+        document.getElementById("principal").value === "" ||
+        document.getElementById("rate").value === "" ||
+        document.getElementById("time").value === "" ||
+        !Number.isFinite(principal) ||
+        !Number.isFinite(rate) ||
+        !Number.isFinite(time) ||
+        principal < 0 || rate < 0 || time < 0
+      ) {
+        result.textContent = "Please enter valid numbers.";
+        return;
+      }
+
+      const interest = (principal * rate * time) / 100;
+
+      result.textContent =
+        "Simple Interest: " + interest.toFixed(2);
+    }
+  </script>
+
+</body>
+</html>
